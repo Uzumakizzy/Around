@@ -1,0 +1,26 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: microservice-user
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?characterEncoding=UTF8&serverTimezone=UTC&autoReconnect=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka   # Eureka服务端注册地址
+  instance:
+    prefer-ip-address: true  # 优先使用该服务的IP地址注册到Eureka，在生产环境中建议改为true
+    # 服务心跳间隔和失效时间
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
